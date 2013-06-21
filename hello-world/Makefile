@@ -12,7 +12,7 @@ export PROJECT =hello-world
 
 # for easy switching of boards
 ifeq ($(strip $(BOARD)),)
-	export BOARD = msba2
+	export BOARD = agilefox
 endif
 
 # this has to be the absolute path of the RIOT-base dir
@@ -20,6 +20,9 @@ export RIOTBASE =$(CURDIR)/../../RIOT
 export RIOTBOARD =$(CURDIR)/../../boards
 
 ifeq ($(BOARD),stm32f4discovery)
+	include Makefile.$(BOARD)
+endif
+ifeq ($(BOARD),agilefox)
 	include Makefile.$(BOARD)
 endif
 
