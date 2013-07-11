@@ -16,12 +16,13 @@ int main(void) {
   at86rf231_init();
   at86rf231_set_channel(26);
   puts("rf init ok");
+  at86rf231_rx();
 
   while (1)
   {
-    puts(".");
+    //puts(".");
 	  vtimer_usleep(1 * SEC);
-    at86rf231_xmit(pkt_buff, 7);
+    //at86rf231_xmit(pkt_buff, 7);
 
 	  LED_GREEN_TOGGLE();
   }
