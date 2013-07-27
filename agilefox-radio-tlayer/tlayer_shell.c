@@ -309,7 +309,9 @@ void send_udp(char *str)
     int bytes_sent;
     int address, count;
     char text[] = "abcdefghijklmnopqrstuvwxyz0123456789!-=$%&/()";
-    sscanf(str, "send_udp %i %i %s", &count, &address, text);
+    //sscanf(str, "send_udp %i %i %s", &count, &address, text);
+    count = 1;
+    address = 0xCB;
 
     sock = socket(PF_INET6, SOCK_DGRAM, IPPROTO_UDP);
 
@@ -317,6 +319,7 @@ void send_udp(char *str)
         printf("Error Creating Socket!");
         exit(EXIT_FAILURE);
     }
+
 
     memset(&sa, 0, sizeof sa);
 

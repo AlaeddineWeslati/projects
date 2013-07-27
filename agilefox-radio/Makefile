@@ -37,8 +37,10 @@ USEMODULE += auto_init
 #USEMODULE += sht11
 #USEMODULE += ltc4150
 #USEMODULE += cc110x
+USEMODULE += at86rf231
+#USEMODULE += transceiver
 #USEMODULE += fat
 
-export INCLUDES=-I$(RIOTBOARD)/$(BOARD)/include -I$(RIOTBASE)/core/include -I$(RIOTCPU)/$(CPU)/include -I$(RIOTBASE)/sys/lib -I$(RIOTBASE)/sys/include/ -I$(RIOTBASE)/drivers/include/
+export INCLUDES=-I$(RIOTBOARD)/$(BOARD)/include -I$(RIOTBASE)/core/include -I$(RIOTCPU)/$(CPU)/include -I$(RIOTBASE)/sys/lib -I$(RIOTBASE)/sys/include/ -I$(RIOTBASE)/drivers/include/ -I$(RIOTBASE)/drivers/at86rf231/include/ -I$(RIOTBASE)/sys/net/
 
 include $(RIOTBASE)/Makefile.include

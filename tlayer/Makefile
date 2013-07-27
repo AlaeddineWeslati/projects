@@ -11,29 +11,31 @@
 export PROJECT =tlayer
 
 # for easy switching of boards
-export BOARD = msba2
+export BOARD = agilefox
 
 # this has to be the absolute path of the RIOT-base dir
 export RIOTBASE =$(CURDIR)/../../RIOT
 export RIOTCPU =$(CURDIR)/../../RIOT/cpu
 export RIOTBOARD =$(CURDIR)/../../boards
 
+ifeq ($(BOARD),agilefox)
+	include Makefile.$(BOARD)
+endif
+
 ## Modules to include. 
 
 USEMODULE += auto_init
 USEMODULE += vtimer
 USEMODULE += ps
-USEMODULE += shell
-USEMODULE += shell_commands
 USEMODULE += config
-USEMODULE += cc110x_ng
+USEMODULE += at86rf231
 USEMODULE += net_help
 USEMODULE += sixlowpan
 USEMODULE += destiny
 USEMODULE += uart0
 USEMODULE += posix
-USEMODULE += ltc4150
+#USEMODULE += ltc4150
 
-export INCLUDES += -I$(RIOTBASE)/sys/include -I$(RIOTBASE)/sys/net -I$(RIOTBASE)/drivers/include -I$(RIOTBASE)/drivers/cc110x_ng/include
+export INCLUDES=-I$(RIOTBOARD)/$(BOARD)/include -I$(RIOTBASE)/core/include -I$(RIOTCPU)/$(CPU)/include -I$(RIOTBASE)/sys/lib -I$(RIOTBASE)/sys/include/ -I$(RIOTBASE)/drivers/include/ -I$(RIOTBASE)/drivers/at86rf231/include/ -I$(RIOTBASE)/sys/net/ -I$(RIOTBASE)/sys/net/sixlowpan/
 
 include $(RIOTBASE)/Makefile.include
